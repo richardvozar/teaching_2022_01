@@ -1,0 +1,19 @@
+1. feladat
+Írj egy programot loop-ot használva, ami összeszorozza 1-től 10-ig számokat, eltárolja az eredményt, majd kiírja. (3628800)
+
+2. feladat
+Készíts egy szamok nevű listát rendre a következő elemekkel: 10, 11, 12, 20, 21, 23
+	a) írj egy programot, ami összeadja az összes elemet a listában, majd kiírja
+	b) írj egy programot, ami kiírja a listában a legnagyobb elemet
+	c) írj egy programot, ami a második elemtől (1. indexű) kezdve a negyedik (3. indexű) elemig kiírja a lista tartalmát (a negyedik elem még legyen benne)
+	d) írj egy programot, ami az utolsó elemet megváltoztatja 22-re
+
+3. feladat
+Írj egy programot, amely eltárolja a teljes_nev változóba a "Vladimir Putyin" szöveget.
+A program mentse ki a teljes nevet egy v_nev és egy k_nev változóba.
+Gondolatmenet: járjuk végig a sztringet, majd ha találunk szóközt, mentsük el, hogy melyik indexen van. Ezután már csak a megfelelő intervallumát kell kimenteni a sztringnek.
+
+4. feladat
+Hozd létre az egytol_huszig nevű üres listát.
+For ciklus segítségével pakolj bele minden számot 1-20-ig.
+Írj egy programot, ami egy paros_szamok nevű listába eltárol minden páros számot az egytol_huszig nevű listából.

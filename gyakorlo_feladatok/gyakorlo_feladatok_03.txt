@@ -1,0 +1,26 @@
+1. feladat
+Írj egy programot, ami függőlegesen írja ki, hogy 'Hello'.
+
+2. feladat
+Készíts egy programot, ami beolvas a konzolról (input) egy egész számot és kiírja, hogy az adott szám páros vagy páratlan-e.
+
+3. feladat
+Készíts egy osztas() nevű függvényt, amely az x és y paramétereket várja.
+- A program végezze el az x/y osztást, majd írja ki az eredményt!
+- próbáld ki, mi történik akkor, ha az y értékének 0-t adsz!
+- kezeld le ezt az esetet úgy, hogy ha 0-val akarnánk osztani, akkor csak írjuk ki a képernyőre, hogy "Nullával nem osztunk!"
+
+4. feladat
+Készíts egy programot amely a következőt írja ki a képernyőre:
+0 Éljen a Python!
+2 Éljen a Python!
+4 Éljen a Python!
+6 Éljen a Python!
+
+Készítsd el for loop-pal is és while loop-pal is!
+
+
+5. feladat: Páros számok összege
+Írj Python szkriptet, amely beolvas a standard bemenetről két egész számot: rendre egy zárt intervallum alsó és felső végpontját!
+A program írja ki a konzolra az intervallumban található páros számok összegét!
+A beolvasott alsó és felső végpontok még részei az intervallumnak.

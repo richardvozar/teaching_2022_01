@@ -1,0 +1,100 @@
+Mai órán a stringműveletekről, listaműveletekről lesz szó, és megnézzük, mire jó a return utasítás a függvényeknél!
+
+Kezdjük a return-nal.
+
+Fontos: ha egy függvényben eljutunk a return-ig, akkor abban a pontban kilépünk a függvényből!
+Pl ha adott esetben nem szeretném, hogy ha egy feltétel teljesül, lefusson a függvény, akkor simán használhatom:
+
+Pl:
+
+def negyzetgyok(n):
+	if n < 0:
+		print("negatív számnak nincs négyzetgyöke (R-ben)")
+		return
+	
+	print(n ** 2)
+
+A függvényeink vissza térhetnek valamilyen értékkel vagy akár értékekkel.
+Ezt a visszatérési értéket a return kulcsszó után adhatjuk meg.
+
+Nézzük meg, mi történik akkor, ha egy függvényt nem meghívok csak simán,
+hanem a meghívást egy változóba belerakom:
+
+def hello(nev):
+  print("Hello, " + nev)
+
+udvozles = hello("Sváb")
+
+print(udvozles)
+
+Kimenet:
+Hello, Sváb
+None       <---- None, vagyis üres értéke van a függvénynek
+
+Ezt változtathatjuk meg a return kulcsszó segítségével!
+
+ha hozzáírjuk az előző függvényhez, hogy mivel térjen vissza például:
+return 0
+
+akkor a függvény visszatérési értéke 0 lesz
+tehát ha ezt a függvényt belerakjuk egy változóba, akkor a visszatérési értéket tárolja el:
+
+PL:
+
+def osszead(a, b, c):
+	return a + b + c
+
+osszead(1, 2, 3)  # most nem iratunk ki semmit, hanem a függvény visszatér az értékkel
+
+olyan, mintha azt mondanánk, hogy:
+1 + 2 + 3
+
+ha eltároljuk pl így:
+
+a = osszead(1, 2, 3)
+print(a)
+
+Kimenet:
+6
+
+Akkor tudjuk használni azt az értéket amivel visszatért a függvény!
+
+BÁRMILYEN TÍPUSSAL VISSZATÉRHETÜNK (int, str, bool, list, stb..)
+
+
+
+Listaelem előfordulásának ellenőrzése:
+
+szintaktis:
+elem in lista
+
+Példa: Szerepel-e Hulk a bosszúállók között?
+
+bosszuallok = ["Thor", "Hulk", "Vízió", "Hangya", "Vasember"]
+
+if "Hulk" in bosszuallok:
+    print("Hulk a bosszúállók közé tartozik.")
+
+Ugyanez használható a stringekre is:
+
+Részstring előfordulása:
+
+Pythonban, ha le akarjuk ellenőrizni, hogy egy szöveg részstringként szerepel-e egy másik szövegben,
+akkor ezt az in kulcsszóval egyszerűen meg tudjuk tenni.
+
+Az s1 in s2 kifejezés igazat ad vissza, ha az s1 szöveg benne van az s2 szövegben.
+
+PL:
+szoveg = "1, egy almafa; 2, két katica; 3, három kiskacsa; 1, 2, 3"
+
+if "alma" in szoveg:
+    print("Van a szövegben alma.")
+
+if szoveg[0] in "0123456789":
+    print("A szöveg egy számjeggyel kezdődik.")
+	
+Kimenet:
+Van a szövegben alma.
+A szöveg egy számjeggyel kezdődik.
+
+

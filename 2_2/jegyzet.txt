@@ -1,0 +1,5 @@
+#   + operátor
+
+str + str    # JÓ
+str + float  # ROSSZ
+

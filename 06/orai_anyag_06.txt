@@ -1,0 +1,260 @@
+HÁTRA VAN:
+-scope-ok
+-listák
+-fájlkezelés
+
+# ezután jön töménytelen feladatmegoldás, gyakorlás
+# minden eddig tanult dolgot felhasználva kell gyakorolni
+# készítek majd gyakorló feladatokat
+# aztán durranthatjuk az érettségi feladatsorokat is
+
+
+Globális, lokális scope:
+
+# a scope egy adott kódterület
+# a scope végén létrehozott változók törlésre kerülnek - memória spórolás, szemétgyűjtés céljából
+# két féle scope van, globális és lokális
+
+# például lokális scope egy függvényen belüli rész
+# ez alapján ha meghívunk egy függvényt, és azon belül létre lettek hozva változók, akkor ha a függvényből kilépünk, a változó törlődik
+
+
+def f():
+    # innen kezdődik az f() függvény scope-ja
+    a = 10
+    # és idáig tart.
+
+
+# tehát létrehozunk egy a változót, majd ha lefut a függvény, akkor törlődik
+
+# scope-ok elérése:
+# global scopeból nem tudunk elérni egy belső(lokális) scope változóját
+
+def f():
+    a = 10
+
+f()
+
+print(a)
+# hiba: a nincs definiálva
+
+# mi van ha létrehozzuk előtte?
+
+a = 5
+
+def f():
+    a = 10
+
+f()
+
+print(a)
+# 5
+
+# hoppá.. hiába írtuk át a függvényben az a értékét, mégis 5 maradt
+# ez azért van, mert a függvény mindig a saját scope-jában keresi először a változókat!
+# tehát ha a függvényen belül megváltoztatom az a értékét:
+
+def f():
+    a = 10 # a függvény keresi az 'a'-t. nem találja, ezért létrehozza
+    a = 42 # a függvény keresi az 'a'-t. megtalálja, ezért módosítja
+    print(a)
+
+
+# lokális scope-on belül ugyanakkor el tudunk érni globális scope-ban lévő változókat is
+# erre használjuk a global kulcsszót.
+# a használat előtt jelezni kell a függvénynek, hogy a globális scopeban keresse az 'a' változót
+
+a = 5
+
+def f():
+    global a
+    a = 10
+
+f()
+
+print(a)
+# 10
+
+# így a függvény először a global scopeban keresi az 'a' változót, meg is találja és az módosítja
+
+# ezen ismeretek alapján meg tudjuk vizsgálni, hogy a függvényeknek átadott paraméterek milyen scopeban vannak
+
+a = 5
+
+def f(a):
+    a = 10
+
+f(a)
+
+print(a)
+# 5
+
+# látható hogy a paraméterek a függvényen belül léteznek csak, tehát lokális scope-ban tartoznak
+# tehát nem magát a változót adtuk át neki, hanem annak csak az értékét
+# nagyjából úgy a legkönnyebb ezt elképzelni, hogy ha átadunk a függvény paraméterének egy változót:
+# akkor nem magát a változót, hanem annak a másolatát adjuk át (vagy annak csak az értékét)
+
+# ezeket azért fontos tudni, mert a továbbiakban a listákról fogunk beszélni részletesebben
+# és a listák ebből a szempontból másképpen működnek, mint a változók
+
+
+LISTÁK ISMÉTLÉS
+listák: dinamikus méretű adatszerkezet, tetszőleges számú, nem feltétlen azonos típusú elemek tárolására alkalmas adatszerkezet
+
+lista létrehozása:
+
+ures1 = list()
+ures2 = []
+
+kutyak = ['Ubul', 'Pamacs', 'Scooby Doo'] # stringeket tároló lista
+
+# lista hosszának lekérdezése
+print(len(kutyak))
+
+listaelemek indexelése: listák elemeit el tudjuk érni
+elérni annyit takar, hogy: le tudjuk kérdezni, vagy akár át tudjuk írni
+
+lista_neve[index]
+
+0-tól kezdődnek az indexek, szintén működik a negatív index, illetve az intervallumos indexelés:
+
+gyumolcsok = ["alma", "citrom", "barack", "pomeló"]
+
+print(gyumolcsok[0])        # a legelső listaelem
+print(gyumolcsok[-1])       # az utolsó listaelem
+print(gyumolcsok[1:3])      # az 1-3. indexű elemek (a 3. indexű elem már nincs benne)
+print(gyumolcsok[2:])       # az elemek a 2. indextől a lista végéig
+print(gyumolcsok[:])        # a teljes lista
+print(gyumolcsok[::2])      # minden második listaelem
+
+Ha egy listát meg szeretnénk fordítani, akkor a tanult trükköt itt is használhatjuk.
+
+print(gyumolcsok[::-1])
+
+
+A stringekkel ellentétben a listáknál lehetőségünk van egy adott indexen lévő elem értékének módosítására. Ezt úgy is mondjuk, hogy a lista egy mutable (módosítható) típus. (A stringek karaktereit nem tudtuk módosítani, hiszen a string egy immutable típus volt.)
+
+gyumolcsok = ["alma", "citrom", "barack", "pomeló"]
+gyumolcsok[1] = "görögdinnye"       # listaelem módosítása
+
+print(gyumolcsok)
+
+
+Listaelemek bejárása:
+
+gyumolcsok = ["alma", "citrom", "barack", "pomeló"]
+
+for gyumi in gyumolcsok:            # listaszerű for ciklus
+    print(gyumi)
+
+print("--------------------")
+
+for i in range(len(gyumolcsok)):    # index alapú for ciklus
+    print(gyumolcsok[i])
+
+
+Referencia szerinti működés:
+
+Pythonban a listák referencia szerint működnek. Ez azt jelenti, hogy ha átadunk egy függvénynek egy listát paraméterül, akkor a függvény nem a kapott lista másolatával, hanem az eredeti listával fog dolgozni.
+
+def nagybetusit(lista):
+    for i in range(len(lista)): # egy stringekből álló lista összes elemét nagybetűsítjük
+        lista[i] = lista[i].upper()
+
+    return lista
+
+gyumolcsok = ["alma", "citrom", "barack", "pomeló"]
+nagybetus_gyumolcsok = nagybetusit(gyumolcsok)
+
+print(nagybetus_gyumolcsok)
+print(gyumolcsok)               # az eredeti lista is módosul!
+
+
+Ha nem szeretnénk, hogy az eredeti listánk tartalmát módosítsa a függvény, akkor készítsünk a listánkról egy másolatot, és dolgozzunk azzal! Egy lista lemásolásához használjuk a lista_neve[:] szintaxist!
+
+def nagybetusit(lista):
+    for i in range(len(lista)):
+        lista[i] = lista[i].upper()
+
+    return lista
+
+gyumolcsok = ["alma", "citrom", "barack", "pomeló"]
+nagybetus_gyumolcsok = nagybetusit(gyumolcsok[:])   # egy másolatot adunk át
+
+print(nagybetus_gyumolcsok)
+print(gyumolcsok)               # az eredeti lista tartalma megmarad!
+
+
+Adott indexű listaelem törlése
+A del lista[i] szintaxissal törölhetjük a lista i. indexén található elemet.
+
+Példa: A 2. indexű elem törlése egy listából
+
+
+bosszuallok = ["Thor", "Hulk", "Vízió", "Hangya", "Vasember"]
+del bosszuallok[2]
+
+print(bosszuallok)
+
+
+Listák összefűzése¶
+A + (plusz) operátorral összefűzhetjük két vagy több lista tartalmát.
+
+Példa: Két lista összefűzése
+
+
+bosszuallok1 = ["Thor", "Hulk", "Vízió"]
+bosszuallok2 = ["Hangya", "Vasember"]
+
+osszefuzott = bosszuallok1 + bosszuallok2
+print(osszefuzott)
+
+
+Egy lista extend() metódusával hozzá tudjuk fűzni az adott listához egy másik lista elemeit.
+
+Példa: A bosszuallok1 listához hozzáfűzzük a bosszuallok2 lista elemeit
+
+
+bosszuallok1 = ["Thor", "Hulk", "Vízió"]
+bosszuallok2 = ["Hangya", "Vasember"]
+
+bosszuallok1.extend(bosszuallok2)
+print(bosszuallok1)
+
+
+Listakezelő függvények¶
+Pythonban számos beépített függvényt használhatunk listák kezelésére. Néhány fontosabb:
+
+lista.append(e): beszúrja az e elemet a lista végére
+lista.insert(i, e): beszúrja az e elemet a lista i. indexére
+lista.remove(e): törli a lista-ból az e elem legelső előfordulását
+lista.sort(): rendezi a lista elemeit
+helyben rendez, így az eredeti listát módosítja (ha ezt nem szeretnénk, akkor használhatjuk a sorted(lista) függvényt)
+többféle adattípusra is működik: szövegeket tartalmazó listákat ábécé-sorrendbe, számokat tartalmazó listákat növekvő sorrendbe rendezi alapértelmezés szerint
+lista.clear(): kiüríti a lista-t.
+Példa: Listakezelő függvények alkalmazása
+
+
+bosszuallok = ["Thor", "Hulk", "Vízió", "Thor"]
+
+bosszuallok.append("Hangya")        # hozzáfűzés a lista végéhez
+print(bosszuallok)
+bosszuallok.insert(0, "Vasember")   # beszúrás a lista elejére
+print(bosszuallok)
+
+bosszuallok.remove("Thor")          # a legelső "Thor"-t törli
+bosszuallok.sort()                  # rendezés (itt: ábécé-sorrend)
+print(bosszuallok)
+
+bosszuallok.clear()                 # lista kiürítése
+print(bosszuallok)
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,55 @@
+4. órához plusz gyakorlók
+1. feladat: Leghosszabb szó
+Írj egy leghosszabb_szo nevű függvényt, amely egy szöveget kap paraméterül (a szöveg szóközzel elválasztott szavakat tartalmaz)! A függvény térjen vissza a szövegben található leghosszabb szóval! Amennyiben több szó is ugyanolyan hosszú, akkor közülük a szövegben korábban előfordulót add vissza!
+
+Ha a paraméterül kapott szöveg az üres string, akkor a visszatérési érték a HIBA! szöveg legyen! (üres string = 0 hosszú szöveg)
+
+Példa:
+
+Input: "Szia uram! Mondd mar meg, hogy hany ora van!"
+Return: 'uram!'
+
+Input: ""
+Return: 'HIBA!'
+2. feladat: Gyenge jelszavak
+Elliot egy új feladattal bízza meg alkalmazottját. Elliotnak ki kell válogatnia a vállalat által használt jelszavak közül azokat, amelyek gyengének minősülnek.
+
+Írj egy gyenge_jelszavak nevű függvényt, amely egy jelszavakat tartalmazó listát kap paraméterül! A függvény tegye egy új listába és írja ki ezek közül a gyenge jelszavakat! Egy jelszót gyengének tekintünk, ha azrövidebb, mint 5 karakter.
+
+Példa:
+Input:* ['Root', 'Kekw2000', 'H0sszuJelszoG0esBrrr', 'Admin123456', 'sub2Pewdiepie', 'asdqwe', 'K1L0']*
+Return: ['Root', 'K1L0']
+3. feladat: Abszolútérték-maximum
+Írj egy abs_max nevű függvényt, amely két egész számot vár paraméterül, és visszatér ezek abszolútérték-maximumával! Tehát vesszük mindkét szám abszolútértékét, és ezek közül visszaadjuk a nagyobbat.
+
+Példa:
+Input:* 12, -15*
+Return: 15
+4. feladat:  Kuba
+Kuba egy Discord szerveren moderátor. A szabadidejét sokszor azzal tölti, hogy a szerver bizonyos tagjainak a felhasználónevét átírja a következőképpen:
+
+- a felhasználónév végére egy . (pont) karaktert tesz, amennyiben az eredetileg nem végződött pontra
+- ellenkező esetben, pont karakterre végződő felhasználónevek esetén eltávolítja a név végéről a pontot.
+Írj egy kuba nevű függvényt, amely egy felhasználónevet (string) kap paraméterül, elvégzi a fenti szabályok alapján a név átalakítását, majd kiírja az így kapott eredményt!
+
+Példa:
+Input: 'Korte12'
+Return: 'Korte12.'
+
+Input: 'Tamas.'
+Return: 'Tamas'
+5. feladat: Armstrong-szám
+A matematikában egy n-jegyű számot Armstrong-számnak nevezünk, ha minden számjegyét az n-edik hatványra emelve és összeadva az eredeti számot kapjuk. Például a 153 egy Armstrong-szám, hiszen .
+
+Írj egy armstrong_szam nevű függvényt, amely garantáltan egy nemnegatív egész számot kap paraméterül, és kiírja, hogy a paraméterben kapott szám Armstrong-szám vagy sem!
+
+Példa:
+
+Input: 153
+Return: True
+
+Input: 1999
+Return: False
+
+Input: 8208
+Return: True

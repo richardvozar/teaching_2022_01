@@ -1,0 +1,180 @@
+mi az a szkript?
+
+-gyakorlatilag egy sima szöveg
+-vannak bizonyos parancsok (kulcsszavak) amiket a fordító értelmez, majd azokat végrehajtja
+
+
+miket lehet csinálni?
+
+-adatokat eltárolni
+	-változókba
+	-konstansokba
+	-különböző adatszerkezetekbe
+-matematikai műveleteket végrehajtani
+	-összeadás
+	-kivonás
+	-szorzás
+	-osztás
+	-egész osztás
+	-modulo
+	-hatványozás
+-adatokat változtatni, manipulálni
+	-értékadás
+	-érték módosítás
+	-törlés stb..
+-adatokat beolvasni, kiírni
+	-input()
+	-print()
+-fájlokat beolvasni, módosítani
+	-open()
+
+
+saját magunk ellenőrzésére kiíratás?
+
+-használjuk a print() beépített függvényt - függvényekről kicsit később
+
+
+adatokat eltárolni?
+
+-primitív változók (int, float, str, bool)
+-összetett változók (list, set, dict)
+
+a = 42
+b = 3.14
+c = "Az elet ertelme"
+
+print(c)
+print(":")
+print(a)
+print("A pi két tizedes jegyig:")
+print(b)
+
+matematikai műveletek?
+
+5 + 2 * 3     # először szorzunk, aztán összeadunk
+11
+
+(5 + 2) * 3   # először összeadunk, aztán szorzunk
+21
+
+5 / 2         # valós osztás
+2.5
+
+5 // 2        # egészosztás
+2
+
+5 % 2         # maradékos osztás
+1
+
+2 ** 10       # hatványozás
+1024
+
+
+adatok változtatása?
+
+-érték módosítás
+	a = 5
+	print(a)
+	a = a + 5
+	print(a)
+	a += 5
+	print(a)
+
+
+KOMMENTEK?
+
+-azok a sorok amik ki vannak kommentelve, azok nem hajtódnak végre
+- # egysoros
+- """ többsoros komment """
+
+
+FÜGGVÉNYEK?
+
+-mi van akkor, ha ugyanazt a parancsot/parancsok sorozatát akarom végrehajtani, viszont más értékekkel?
+-miért nem egyszerűen csak átmásoljuk a sokszor használt kódrészletet?
+	-indokolatlanul megnöveljük a kódsorok számát, így átláthatatlanabb lesz a kódunk
+	-képzeljük el, hogy hibát találunk az eredeti megvalósításban, az összes helyen ki kéne javítani
+
+-válasz: függvény
+
+-szintakszis: def fuggveny_neve(parameter1, parameter2, ... , parameterN): indentalas
+
+
+példa:
+
+másodfokú egyenlet megoldóképlete:
+
+def masodfoku(a, b, c):
+	# diszkriminans
+	d = b ** 2 - 4 * a * c
+	
+	# x1
+	x1 = (-b + d) / 2 * a
+	# x2
+	x2 = (-b - d) / 2 * a
+	
+	# kiíratás
+	print("x1 = " + str(x1))
+	print("x2 = " + str(x2))
+
+
+
+BEOLVASÁS, TÍPUSKONVERZIÓK:
+
+-beolvasás
+nev = input("Hogy hívnak? ")
+Sváb
+print("Szia, " + nev + "!")
+Szia, Sváb!
+
+-típuskonverzió
+	int()
+	float()
+	str()
+
+FONTOS!
+stringet csak stringgel lehet összefűzni
+
+szuletesi_ev = input("Melyik évben születtél? ")
+Melyik évben születtél? 1998
+eletkor = 2022 - szuletesi_ev # hiba, mert int-ből nem vonhatunk ki stringet
+#megoldás: int() függvénnyel átcastoljuk a beolvasott szöveget, ami int-té alakítja
+szuletesi_ev = int(szuletesi_ev)
+
+
+
+
+
+
+
+
+RÖVID GYAKORLÓ FELADATOK:
+
+1. feladat: Összefűzés
+
+Írj Python szkriptet, amely beolvas a standard bemenetről két szöveget és rendre összefűzi azokat!
+Az összefűzés eredményeképpen kapott szöveget írasd ki a konzolra!
+
+Példa:
+
+Az egyik szoveg: kecske
+A masik szoveg: sajt
+
+A ket szoveg osszefuzve: kecskesajt
+
+-------------------
+
+2. feladat: Négyzetgyök
+Írj Python szkriptet, amely beolvas a standard bemenetről egy egész számot, és kiírja annak a négyzetgyökét!
+Amennyiben a beolvasott szám negatív, akkor a "Negativ szambol nem vonunk negyzetgyokot!" szöveget írasd ki!
+
+Tipp: négyzetgyök(N) értéke megegyezik (N az 1/2-edik hatvány) értékével.
+
+Példa:
+
+Adj meg egy szamot: 2
+A beirt szam negyzetgyoke: 1.4142135623730951
+Adj meg egy szamot: -1
+Negativ szambol nem vonunk negyzetgyokot!
+
+-------------------

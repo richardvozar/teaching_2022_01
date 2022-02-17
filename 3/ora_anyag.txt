@@ -1,0 +1,211 @@
+ismétlés:
+
+# értékadás:
+
+a = 42
+b = 3.14
+c = "elet ertelme"
+d = True
+
+# matematikai operátorok
+
+a = 1
+b = 2
+c = a + b # 3
+
+# változók castolása - típuskonverziók
+
+a = 3
+
+print("az a értéke: " + 3) # HIBA
+
+print("az a értéke: " + str(3))
+
+
+# beolvasás a konzolról
+
+nev = input("mi a neved? ")
+print("Hello, " + nev)
+
+# input() mindig str típussal tér vissza
+egy_szam = input("adj meg egy számot: ")
+egy_szam = float(egy_szam)
+
+print("A beadott szám négyzete: " + str(egy_szam ** 2))
+
+
+# stringek és a matematikai műveletek
+
+print("házi" + "macska")
+
+print("négy: " + 4) # HIBA
+
+print("ha" * 3)
+
+# kommentek
+
+# egysoros
+
+"""
+több
+soros
+"""
+
+
+# függvények
+
+
+def negyzet(alap, hatvany):
+	print(str(alap) + "^" + str(hatvany) + "=" + str(alap**hatvany))
+
+
+
+########### ISMÉTLÉS VÉGE ##############
+
+# VÁLTOZÓKBAN TÁROLT TÍPUSOK ELLENŐRZÉSE
+# type() függvény
+
+type(a)
+type(b)
+type(c)
+type(d)
+
+
+# LOGIKAI OPERÁTOROK
+==
+!=
+<
+>
+<=
+>=
+
+and
+or
+not
+
+
+
+# vezérlési szerkezetek
+
+# Az 'if' utasítás segítségével egy kódrészlet csak akkor hajtódik végre, ha a benne levő feltétel teljesül (True-val tér vissza)
+# ehhez tartozó segéd kulcsszavak: elif, else
+
+szam = int(input("Adj meg egy egész számot: "))
+
+if szam < 0:
+	print("A beírt szám negatív szám")
+elif szam == 0:
+	print("A beírt szám nulla")
+else:
+	print("A beírt szám pozitív szám")
+
+# másik példa:
+
+homerseklet = "meleg"
+esik = True
+
+if homerseklet == "meleg" and esik == False:
+	print("irany a strand")
+else:
+	print("durran a LOL kliens")
+
+
+# for ciklus:
+
+for ciklus_valtozo in valami_iteralhato:
+	parancsok
+
+
+# használjuk a beépített range függvényt
+
+range(kezdőérték, végérték, lépésköz) # kezdőérték-től végérték-ig lépésköz lépéssel, úgy hogy a végérték már nincs benne!!!
+range(1, 10, 1) # 1, 2, 3, 4, 5, 6, 7, 8, 9
+range(1, 5) # 1, 2, 3, 4
+range(6) # 0, 1, 2, 3, 4, 5
+# visszafelé hogy lépnél??
+range(10, 1, -2) # 10, 8, 6, 4, 2
+
+# stringek bejárása
+for betu in "almafa":
+	print(betu)
+# a
+# l
+# m
+# a
+# f
+# a
+
+________________________ EDDIG SIKERÜLT LEADNI!!! __________________________
+
+
+
+# lista bejárása
+
+# lista egy adatszerkezet, amely értékeket tárol
+# lista létrehozása:
+ures_lista_1 = list()
+ures_lista_2 = []
+nevek = ["Jani", "Feri", "Sanyi"]
+
+# listához elemek hozzáadása: .append()
+szamok = []
+szamok.append(1)
+szamok.append(2)
+szamok.append(3)
+print(szamok) # [1, 2, 3]
+
+# listaelem lekérdezése: lista_neve[index]  (0-tól indexelünk, tehát az első elem a nulladik elem)
+print(szamok[0]) # 1
+# utolsó elem lekérdezése: -1 index
+# mi van akkor, ha olyan indexű elemet kérünk le, ami nem létezik??
+# lista hossza: len()
+print(len(szamok))
+
+# lista bejárása most már tényleg
+
+for szam in szamok:
+	print(szam)
+# 1
+# 2
+# 3
+
+
+# break és continue
+# break: megállítja a ciklust
+# continue: a maradék kódrészletet kihagyva a következő ciklusra ugrik
+
+for i in range(1, 100):
+    print(i)
+
+    if i == 42:
+        print("Megtaláltuk az élet értelmét!")
+        break
+
+
+print("A legjobb pizzafeltétek:")
+
+feltetek = ["sajt", "bacon", "ananász", "pepperoni"]
+
+for feltet in feltetek:
+    if feltet == "ananász":
+        continue
+    print(feltet)
+
+
+
+# while ciklus: amíg a feltétel teljesül, végrehajtódik a blokk
+
+i = 0
+while i < 10:
+	print(i)
+	i += 1
+
+
+
+########### STAFÉTA ÁTADÁSA --> NÉZZÜNK EGY-KÉT FELADATOT ############
+
+-Írjunk egy programot, ami összeszorozza 1-től 10-ig számokat, eltárolja az eredményt, majd kiírja.
+
+-Módosítsuk a for ciklust úgy, hogy csak minden 3-mal osztható számot szorozzon össze!
+
+-Készíts egy függvényt, ami kiszámítja a paraméterben kapott egész számnál kisebb páratlan pozitív egész számok összegét!
