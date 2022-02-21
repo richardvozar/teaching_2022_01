@@ -1,0 +1,32 @@
+7. óra (listakezelő függvények, listák, eddig tanultak)
+
+1. feladat: Könyvespolc 
+Tünde szeret olvasni, így a polcán is sok könyv van. Egyik nap Tünde rendet rak a lakásában, és a könyveit is rendezi. Írj egy konyveket_rendez nevű függvényt, amely egy könyvcímekből álló listát kap paraméterül! A függvény rendezze a könyvek címét Z-től A-ig (tehát először rendezze a listaelemeket ábécé sorrendbe, majd fordítsa meg a rendezett listát)! A visszatérési érték az eredményül kapott lista. (visszatérési érték = return VALAMI)
+
+Példa input: ['Vajak I', 'Allatfarm', 'Harry Potter es a bolcsek kove', 'A hobbit', 'Szamitogep Architekturak']
+Return: ['Vajak I', 'Szamitogep Architekturak', 'Harry Potter es a bolcsek kove', 'Allatfarm', 'A hobbit']
+2. feladat: Kiárusítás
+Balázs a zsebpénzéből egy új mikrofont szeretne venni. Szerencséjére a kedvenc webshopja épp kiárusítást tart, így minden szórakoztató elektronikai termék akciósan vásárolható meg.
+
+Írj egy akcios_ar nevű függvényt, amely két paramétert vár: a webshopban található mikrofonok eredeti árát (egész számokat tároló lista) és a leárazás mértékét százalékban (valós szám)! A függvény csökkentse a listában lévő árakat az adott százalékkal, és térjen vissza az így kapott listával! Az árak továbbra is egészek legyenek (ne tizedestörtek)! (egésszé alakítás: int(valami_float))
+
+Példa input: [5000, 12000, 10000, 29000, 47000], 30.0
+Return: [3500, 8400, 7000, 20300, 32900]
+3. feladat: Béla
+Béla egy online játékkal játszik. A játékban talált egy bugot, amit kihasználva többször is be tud lépni a játékba ugyanazzal a felhasználónévvel. A játékostársai ezt nem tartják tisztességesnek, ezért úgy döntenek, hogy Bélát kirúgják a játékból.
+
+Írj egy belat_kirug nevű függvényt, amely egy listát kap paraméterül, ami a játékosok neveit tartalmazza (stringek). A függvény távolítsa el a listából az EpicBela20 játékosnév összes előfordulását, majd térjen vissza az így kapott listával!
+
+Példa input: ['EpicBela20', 'python4life', 'EpicBela20', 'EpicBela20', 'kalkEasy', 'varj_ez_nem_is_csgo', 'sajt42']
+Return: ['python4life', 'kalkEasy', 'varj_ez_nem_is_csgo', 'sajt42']
+4. feladat: Leghosszabb szó
+Írj egy leghosszabb_szo nevű függvényt, amely egy szöveget kap paraméterül (a szöveg szóközzel elválasztott szavakat tartalmaz)! A függvény térjen vissza a szövegben található leghosszabb szóval! Amennyiben több szó is ugyanolyan hosszú, akkor közülük a szövegben korábban előfordulót add vissza!
+(reminder --> szöveg feldarabolása: valami_szoveg.split())
+
+Ha a paraméterül kapott szöveg az üres string, akkor a visszatérési érték a HIBA! szöveg legyen!
+
+Példa input: "Szia uram! Mondd mar meg, hogy hany ora van!"
+Return: "uram!"
+
+Példa input: ""
+Return: "HIBA!"
