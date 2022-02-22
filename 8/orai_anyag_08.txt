@@ -1,0 +1,90 @@
+Fájlkezelés
+
+fájlkezelő függvény: open(path, mode)
+
+path: a megnyitni kívánt fájl elérési útvonala (szöveg)
+
+mode: a fájlmegnyitás módja (szöveg)
+	"r": olvasásra (alapértelmezett)
+	"w": írásra (felülírja a fájl korábbi tartalmát)
+	"a": fájl végéhez való hozzáfűzésre (megőrzi a fájl korábbi tartalmát)
+	"x": kizárólagos létrehozásra (ha már létezik a fájl, akkor hibát kapunk)
+	"a+": hozzáfűzés és olvasás
+	"w+": írás és olvasás
+
+
+A megnyitott fájlon az alábbi műveleteket használhatjuk:
+
+read(n): n darab karakter beolvasása (ahol éppen vagyunk a fájlban)
+readline(): egy sor beolvasása (ahol éppen vagyunk a fájlban)
+readlines(): az egész fájl beolvasása, soronként
+write(szoveg): adott szöveg írása fájlba
+close(): a megnyitott fájl lezárása
+
+
+#-------- pelda ---------------
+
+# a be.txt fájl megnyitása olvasásra
+file = open("be.txt", "r")         # "be.txt" relatív út, azaz egy mappában van a futtatott kóddal, lehet akár "C:\user\svab\asztal\be.txt"
+
+# a teljes fájl tartalmának beolvasása
+tartalom = file.readlines()
+
+# a tartalom kiíratása soronként
+# A sorok olvasásánál ne felejtsük el, hogy a Python a teljes sort beolvassa, a sorvégi újsor karakterrel (\n) együtt.
+for sor in tartalom:
+    sor = sor[:-1]      # sorvége-jel eltávolítása
+    print(sor)
+
+
+# a megnyitott fájl lezárása
+file.close()  
+
+#-----------------------------------------
+
+
+
+Felmerül viszont a kérdés, hogy ezek segítségével lekezeljük-e az összes lehetséges hibát, ami a fájlkezelés során adódhat?
+
+Pythonban, ha biztonságossá akarjuk tenni a fájlkezelést, akkor használjuk az úgynevezett kontextuskezelő mechanizmust a fájlkezeléskor.
+
+A kontextuskezelő (context manager) gondoskodik a megnyitni kívánt erőforrás megfelelő megnyitásáról és lezárásáról - még akkor is, ha a fájlkezelés során kivétel keletkezik. A kontextuskezelő segítségével elkerülhetők a megnyitva maradt, "beragadt" fájlok.
+
+Pythonban a kontextuskezelő mechanizmust a with kulcsszóval tudjuk használni.
+
+Egy fájl megnyitásának elfogadott módja, kontextuskezelő használatával:
+
+
+
+#-------- pelda ---------------
+with open("be.txt", "r") as my_file:
+    # a megnyitott fájlra my_file-ként hivatkozhatunk
+
+    tartalom = my_file.readline()
+#-----------------------------------------
+
+
+Példa: A be.txt minden sora egy-egy egész számot tartalmaz.
+Olvassuk be a fájl tartalmát, majd számítsuk ki a fájlban szereplő értékek átlagát!
+Ezt írjuk ki egy ki.txt nevű állományba!
+
+
+#-------- pelda ---------------
+atlag = 0                       # változó az átlagnak
+
+with open("be.txt", "r") as f:  # be.txt megnyitása olvasásra
+    osszeg = 0                  # a beolvasott számok összege (az átlaghoz kell)
+    darab = 0                   # hány számot olvastunk be (az átlaghoz kell)
+
+    sor = f.readline()          # első sor beolvasása
+
+    while sor:                  # amíg van sor a fájlban...
+        osszeg += int(sor)      # ...hozzáadjuk az adott számot az összeghez
+        darab += 1              # ...növeljük a beolvasott számok darabszámát
+        sor = f.readline()      # ...beolvassuk a következő sort
+
+atlag = osszeg / darab          # az átlag az összeg és a darabszám hányadosa
+
+with open("ki.txt", "w") as f:  # ki.txt megnyitása írásra
+    f.write("Az átlag: " + str(atlag) + "\n")  # az eredmény fájlba írása
+#-----------------------------------------
